@@ -12,7 +12,7 @@ public class Interface {
     JFrame frame;
 
     public void start(){
-         frame = new JFrame("UserInterface");
+         frame = new JFrame("CHIP8 Emulator");
          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          frame.pack();
          frame.setSize(660, 360);

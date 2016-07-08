@@ -22,7 +22,7 @@ public class MainEmu {
         long currentTime;
         Cpu chip8 = new Cpu();
         chip8.CpuReset();
-        chip8.loadRom("C:\\Users\\gonccalo\\Univ\\Chip-8Emu\\c8games\\PONG2");
+        chip8.loadRom("C:\\Users\\gonccalo\\Univ\\Chip-8Emu\\c8games\\PONG");
         time = System.currentTimeMillis();
         while(true){
             HandleKeys(chip8);
