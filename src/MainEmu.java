@@ -1,18 +1,16 @@
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 
 /**
  * Created by gonccalo on 08-07-2016.
  */
 public class MainEmu{
-    Interface ui;
+    private Interface ui;
     public static void main(String[] args){
         new MainEmu().emuStart();
     }
     private void emuStart(){
         int op;
-        short key;
         int ops = 500;
         int fps = 60;
         int opsPorFrame = ops/fps;
@@ -26,7 +24,6 @@ public class MainEmu{
         chip8.loadRom("C:\\Users\\gonccalo\\Univ\\Chip-8Emu\\c8games\\PONG");
         time = System.currentTimeMillis();
         while(true){
-            HandleKeys(chip8);
             currentTime = System.currentTimeMillis();
             if(time+intervaloFPS < currentTime) {
                 chip8.decreaseTimers();
@@ -54,8 +51,5 @@ public class MainEmu{
             }
         }
         ui.setGameImage(img);
-    }
-
-    private static void HandleKeys(Cpu chip8) {
     }
 }

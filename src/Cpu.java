@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by gonccalo on 06-07-2016.
  */
 public class Cpu {
-    private Random rnd = new Random();
+    private final Random rnd = new Random();
     //registos de 8bits
     private short[] reg;
     //registo I de 16 bits

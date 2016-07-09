@@ -8,11 +8,11 @@ import java.awt.image.BufferedImage;
  * Created by gonccalo on 08-07-2016.
  */
 public class Interface {
-    ImageIcon game;
-    JLabel imglabel = new JLabel();
+    private ImageIcon game;
+    private final JLabel imglabel = new JLabel();
     private JPanel panel1;
-    JFrame frame;
-    Cpu context;
+    private JFrame frame;
+    private final Cpu context;
     public Interface(Cpu context){
         this.context = context;
     }
