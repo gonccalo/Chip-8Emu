@@ -81,8 +81,18 @@ public class Cpu {
             playBeep();
         //System.out.println(dTimer);
     }
-    private void playBeep(){
 
+    private short pressedKey(){
+        for(short key = 0;key<16;key++){
+            if(keys[key] > 0){
+                return key;
+            }
+        }
+        return -1;
+    }
+    private void playBeep(){
+        System.out.print("\007");
+        System.out.flush();
     }
 
     public void loadRom(String filePath){
@@ -382,7 +392,7 @@ public class Cpu {
             for(int j = 0;j<8;j++){
                 //bit = 1 logo tem de ser mudado o px
                 if(((sprite[i] >> (7-j)) & 0x1) == 1){
-                    if(screen[this.reg[x]+j][this.reg[y]+i] == 1){
+                    if(screen[(this.reg[x] + j) & 0x03F][(this.reg[y] + i) & 0x01F] == 1){
                         this.reg[15] = 1;
                         screen[(this.reg[x]+j)&0x03F][(this.reg[y]+i)&0x01F] = 0;
                     }
@@ -409,16 +419,12 @@ public class Cpu {
     }
 
     private void opCodeFX0A(int x) {
-        short pressedKey = -1;
-        for(short i=0;i<16;i++){
-            if(keys[i] == 1){
-                pressedKey = i;
-            }
-        }
-        if (pressedKey == -1)
+        short pKey;
+        pKey = pressedKey();
+        if (pKey == -1)
             pc -= 2;
         else
-            this.reg[x] = pressedKey;
+            this.reg[x] = pKey;
     }
 
     private void opCodeFX15(int x) {
